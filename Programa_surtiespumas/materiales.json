@@ -1,0 +1,92 @@
+[
+    {
+        "id": "AGA1",
+        "nombre": "AGUA",
+        "categoria": "GENERAL",
+        "tipo_magnitud": "volumen",
+        "unidad_base": "ml",
+        "stock": 0.0,
+        "valor_unit": 0.0,
+        "inagotable": true
+    },
+    {
+        "id": "CMV1",
+        "nombre": "ACIDO FORMICO",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    },
+    {
+        "id": "PRO1",
+        "nombre": "ANILINA COEQUIN",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    },
+    {
+        "id": "QM4",
+        "nombre": "ARITAN AN",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    },
+    {
+        "id": "WEST1",
+        "nombre": "CROMO",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 100000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    },
+    {
+        "id": "CMV4",
+        "nombre": "FROMIATO DE SODIO",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    },
+    {
+        "id": "CMV6",
+        "nombre": "JABON",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    },
+    {
+        "id": "TQ25",
+        "nombre": "LH 40",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    },
+    {
+        "id": "MAXI",
+        "nombre": "MAXITAN VSL",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0,
+        "inagotable": false
+    }
+]

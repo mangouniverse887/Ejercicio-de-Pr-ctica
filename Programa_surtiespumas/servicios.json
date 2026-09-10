@@ -1,0 +1,12 @@
+[
+    {
+        "id": "ESC",
+        "nombre": "ESCURRIR",
+        "Insumos": []
+    },
+    {
+        "id": "001",
+        "nombre": "Lavar",
+        "Insumos": []
+    }
+]
