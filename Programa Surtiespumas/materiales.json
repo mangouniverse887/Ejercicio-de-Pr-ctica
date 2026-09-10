@@ -1,0 +1,191 @@
+[
+    {
+        "id": "CMV1",
+        "nombre": "ACIDO FORMICO",
+        "categoria": "ACIDOS",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 200.0
+    },
+    {
+        "id": "PRO1",
+        "nombre": "ANILINA COEQUIN",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "QM4",
+        "nombre": "ARITAN AN",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "WEST1",
+        "nombre": "CROMO",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "CMV4",
+        "nombre": "FROMIATO DE SODIO",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "CMV6",
+        "nombre": "JABON",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ25",
+        "nombre": "LH 40",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "MAXI",
+        "nombre": "MAXITAN VSL",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "MELA",
+        "nombre": "MELASA",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "PRO2",
+        "nombre": "MIMOSA EXTRA LIHG",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ11",
+        "nombre": "SMART OIL ESF",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ15",
+        "nombre": "SMART OIL MSG",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ09",
+        "nombre": "SMART OIL MSS",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ08",
+        "nombre": "SMART OIL PSA",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ10",
+        "nombre": "SMART OIL SSF",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "CLQ3",
+        "nombre": "SMARTAN LF",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ01",
+        "nombre": "SMARTAN M",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ24",
+        "nombre": "SMARTAN REM",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ18",
+        "nombre": "SMARTAN STF",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "TQ02",
+        "nombre": "SMARTAN UR",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    },
+    {
+        "id": "QM6",
+        "nombre": "SUPERDEMA GTA",
+        "categoria": "LIMPIEZA",
+        "tipo_magnitud": "masa",
+        "unidad_base": "mg",
+        "stock": 1000000000000.0,
+        "valor_unit": 1000.0
+    }
+]
