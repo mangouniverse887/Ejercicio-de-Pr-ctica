@@ -80,6 +80,72 @@ def crear_proceso():
     id_proceso = input("ID del Proceso (ej. FORM-309): ")
     nombre = input("Nombre del Proceso/Fórmula: ")
 
+    secuencia = []
+    print("\nConstrucción del Proceso. Puede añadir Materiales, Servicios u otros procesos.")
+    while True:
+        print("\n¿Qué desea añadir a la secuencia?")
+        print("1. Material (Gasto directo)")
+        print("2. Servicio (ej. Escurrir, Lavar)")
+        print("3. Sub-Proceso (Fórmula existente)")
+        print("4. Finalizar y Guardar")
+        opcion = input("Elige una opción (1-4): ")
+
+        if opcion == "1":
+            termino = input("ID o Nombre del material: ")
+            mat = buscar_material(termino)
+            if not mat:
+                print("Material no encontrado.")
+                continue
+            unidad = input(f"Unidad a usar para {mat['nombre']} (ej. ml, L, mg, kg): ").lower()
+            if TIPO_UNIDAD.get(unidad) != mat["tipo_magnitud"]:
+                print("Error: La unidad no coincide con el tipo de magnitud del material.")
+                continue
+            cantidad = float(input(f"Cantidad requerida ({unidad}): "))
+            secuencia.append({
+                "tipo": "material",
+                "id": mat["id"],
+                "nombre": mat["nombre"],
+                "cantidad": cantidad,
+                "unidad": unidad
+            })
+            print(f"Material {mat['nombre']} agregado a la secuencia.")
+
+        elif opcion == "2":
+            id_serv = input("ID o Nombre del servicio: ")
+            serv = next((s for s in servicios if str(s["id"]) == id_serv or s["nombre"].lower() == id_serv.lower()), None)
+            if not serv:
+                print("Servicio no encontrado.")
+                continue
+            secuencia.append({"tipo": "servicio", "id": serv["id"], "nombre": serv["nombre"]})
+            print(f"Servicio {serv['nombre']} agregado a la secuencia.")
+
+        elif opcion == "3":
+            id_proc = input("ID o Nombre del sub-proceso: ")
+            sub_proc = next((p for p in procesos if str(p["id"]) == id_proc or p["nombre"].lower() == id_proc.lower()), None)
+            if not sub_proc:
+                print("Proceso no encontrado.")
+                continue
+            if str(sub_proc["id"]) == str(id_proceso):
+                print("Error: No puedes incluir el proceso dentro de sí mismo (Bucle infinito).")
+                continue
+            secuencia.append({"tipo": "proceso", "id": sub_proc["id"], "nombre": sub_proc["nombre"]})
+            print(f"Sub-proceso {sub_proc['nombre']} agregado a la secuencia.")
+
+        elif opcion == "4":
+            break
+        else:
+            print("Opción inválida.")
+
+    nuevo_proceso = {
+        "id": id_proceso,
+        "nombre": nombre,
+        "secuencia": secuencia
+    }
+
+    procesos.append(nuevo_proceso)
+    guardar_json(ARCHIVO_PROCESOS, procesos)
+    print(f"Proceso '{nombre}' registrado correctamente.")
+
     servicios_proceso = []
     print("\nAsignar Servicios al Proceso (Deje vacío para terminar):")
     while True:
@@ -109,6 +175,26 @@ def crear_proceso():
     print(f"Proceso '{nombre}' registrado correctamente.")
 
 
+def calcular_requerimientos (secuencia, requerimientos_totales):
+    for item in secuencia:
+        if item["tipo"] == "material":
+            mat_id = item["id"]
+            cant_base = item["cantidad"] * FACTOR_CONVER[item["unidad"]]
+            requerimientos_totales[mat_id] = requerimientos_totales.get(mat_id, 0) + cant_base
+
+        elif item["tipo"] == "servicio":
+            serv = next((s for s in servicios if str(s["id"]) == item["id"]), None)
+            if serv:
+                for insumo in serv.get("Insumos", []):
+                    mat_id = insumo["material_id"]
+                    cant_base = insumo["cantidad"] * FACTOR_CONVER[insumo["unidad"]]
+                    requerimientos_totales[mat_id] = requerimientos_totales.get(mat_id, 0) + cant_base
+
+        elif item["tipo"] == "proceso":
+            sub_proc = next((p for p in procesos if str(p["id"]) == item["id"]), None)
+            if sub_proc:
+                calcular_requerimientos(sub_proc.get("secuencia", []), requerimientos_totales)
+
 def ejecutar_proceso():
     print("\n--- EJECUTAR PROCESO DE PRODUCCIÓN ---")
     id_proc = input("ID o Nombre del Proceso a ejecutar: ")
@@ -123,18 +209,16 @@ def ejecutar_proceso():
 
     requerimientos_totales = {}
 
-    for id_serv in proceso["secuencia_servicios"]:
-        serv = next((s for s in servicios if s["id"] == id_serv), None)
-        if serv is None:
-            continue
-
-        for insumo in serv["insumos"]:
-            mat_id = insumo["material_id"]
-            cant_base = insumo["cantidad"] * FACTOR_CONVER[insumo["unidad"]]
-            if mat_id in requerimientos_totales:
-                requerimientos_totales[mat_id] += cant_base
-            else:
-                requerimientos_totales[mat_id] = cant_base
+    if "secuencia_servicios" in proceso:
+        for id_serv in proceso["secuencia_servicios"]:
+            serv = next((s for s in servicios if s["id"] == id_serv), None)
+            if serv:
+                for insumo in serv.get("Insumos", []):
+                    mat_id = insumo["material_id"]
+                    cant_base = insumo["cantidad"] * FACTOR_CONVER[insumo["unidad"]]
+                    requerimientos_totales[mat_id] = requerimientos_totales.get(mat_id, 0) + cant_base
+    else:
+        calcular_requerimientos(proceso.get("secuencia", []), requerimientos_totales)
 
     print("\nVerificando disponibilidad en inventario...")
     for mat_id, cant_requerida_base in requerimientos_totales.items():
@@ -145,7 +229,7 @@ def ejecutar_proceso():
         if mat["stock"] < cant_requerida_base:
             print(f"Stock insuficiente de {mat['nombre']}. Requerido: {cant_requerida_base} {mat['unidad_base']}, Disponible: {mat['stock']} {mat['unidad_base']}")
             return
-
+    
     print("Stock verificado. Procediendo al descuento de materiales...")
     for mat_id, cant_requerida_base in requerimientos_totales.items():
         mat = buscar_material(mat_id)
@@ -156,9 +240,9 @@ def ejecutar_proceso():
     guardar_material()
 
     nombre_producto = input("\nNombre del producto final resultante: ")
-    lote = input("Número de lote/referencia: ")
-    cantidad_producida = float(input("Cantitad total producida: "))
-    unidad_producida = input("Unidad del producto final (ej. Kgs, Unidades, Litros): ").lower()
+    lote = input("Numero de lote/referencia: ")
+    cantidad_producida = float(input("Cantidad total producida: "))
+    unidad_producida = input("Unidad del producto final (ej. Kgs, Unidades, Litros): ")
 
     registro_producto = {
         "lote": lote,

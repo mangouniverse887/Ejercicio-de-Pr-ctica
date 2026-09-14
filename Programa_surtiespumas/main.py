@@ -49,8 +49,8 @@ def iniciar_sistema():
                 sys.exit()
             else:
                 print("\nOpción inválida. Intente de nuevo.\n")
-        elif tipo == "trabajador":
-            print("\n--- MENÚ TRABAJADOR ---")
+        elif tipo == "empleado":
+            print("\n--- MENÚ EMPLEADO ---")
             print(f"{VERDE}1. Gestionar Materiales e Inventario{RESET}")
             print(f"{MORADO}2. Gestionar Servicios y Procesos{RESET}")
             print(f"{AMARILLO}3. Ejecutar Producción{RESET}")
@@ -70,13 +70,13 @@ def iniciar_sistema():
 
 def menu_materiales():
     while True:
-        print("=== GESTIÓN DE MATERIALES INVENTARIO ===")
-        print("1. Añadir / Comprar material (Actualiza stock existente u orígenes)")
-        print("2. Listar todos los materiales")
-        print("3. Consultar material")
-        print("4. Actualizar datos de un material")
-        print("5. Inactivar material (Marcar como agotado)")
-        print("6. Volver al menú principal")
+        print(f"{VERDE}=== GESTIÓN DE MATERIALES INVENTARIO ==={RESET}")
+        print(f"{VERDE}1. Añadir / Comprar material (Actualiza stock existente u orígenes){RESET}")
+        print(f"{VERDE}2. Listar todos los materiales{RESET}")
+        print(f"{VERDE}3. Consultar material{RESET}")
+        print(f"{VERDE}4. Actualizar datos de un material{RESET}")
+        print(f"{VERDE}5. Inactivar material (Marcar como agotado){RESET}")
+        print(f"{ROJO}6. Volver al menú principal{RESET}")
 
         opcion = input("\nSeleccione una opción: ").strip()
 
@@ -93,16 +93,16 @@ def menu_materiales():
         elif opcion == "6":
             break
         else:
-            print("Opción inválida. Intente de nuevo.\n")
+            print(f"{ROJO}Opción inválida. Intente de nuevo.\n{RESET}")
         input("\nPresione Enter para continuar...")
         limpiar_pantalla()
 
 def menu_servicios_procesos():
     while True:
-        print("=== GESTIÓN DE SERVICIOS Y PROCESOS DE PRODUCCIÓN ===")
-        print("1. Crear Servicio Individual (Definir insumos)")
-        print("2. Crear Proceso / Fórmula (Secuencia de servicios)")
-        print("3. Volver al menú principal")
+        print(f"{MORADO}=== GESTIÓN DE SERVICIOS Y PROCESOS DE PRODUCCIÓN ==={RESET}")
+        print(f"{MORADO}1. Crear Servicio Individual (Definir insumos){RESET}")
+        print(f"{MORADO}2. Crear Proceso / Fórmula (Secuencia de servicios){RESET}")
+        print(f"{ROJO}3. Volver al menú principal{RESET}")
 
         opcion = input("\nSelecione una opción: ").strip()
 
@@ -113,38 +113,9 @@ def menu_servicios_procesos():
         elif opcion == "3":
             break
         else:
-            print("Opción inválida. Intente de nuevo.\n")
+            print(f"{ROJO}Opción inválida. Intente de nuevo.\n{RESET}")
+        input("\nPresione Enter para Continuar...")
         limpiar_pantalla()
-
-def menu_principal():
-    cargar_datos()
-
-    while True:
-        print("=" * 50)
-        print("     SISTEMA CENTRAL DE CONTROL Y PRODUCCIÓN      ")
-        print("=" * 50)
-        print("1. Modulo de Materiales e Inventario")
-        print("2. Módulo de Servicios y Procesos (Fórmulas)")
-        print("3. Ejecutar Producción")
-        print("4. Salir")
-
-        opcion = input("\nSeleccione una opción (1-4): ").strip()
-
-        if opcion == "1":
-            limpiar_pantalla()
-            menu_materiales()
-        elif opcion == "2":
-            limpiar_pantalla()
-            menu_servicios_procesos()
-        elif opcion == "3":
-            limpiar_pantalla()
-            ejecutar_proceso()
-            limpiar_pantalla()
-        elif opcion == "4":
-            print("\nCerrando el sistema... Dat os guardados correctamente.")
-            sys.exit()
-        else:
-            print("\nOpción inválida, Ingrese un número entre 1 y 4. \n")
 
 
 if __name__ == "__main__":

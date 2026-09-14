@@ -1,0 +1,39 @@
+[
+    {
+        "id": "FORM-309",
+        "nombre": "PROBANDO",
+        "secuencia": [
+            {
+                "tipo": "material",
+                "id": "AGA1",
+                "nombre": "AGUA",
+                "cantidad": 450.0,
+                "unidad": "l"
+            },
+            {
+                "tipo": "material",
+                "id": "CMV1",
+                "nombre": "ACIDO FORMICO",
+                "cantidad": 1.4,
+                "unidad": "kg"
+            },
+            {
+                "tipo": "material",
+                "id": "CMV6",
+                "nombre": "JABON",
+                "cantidad": 0.9,
+                "unidad": "kg"
+            },
+            {
+                "tipo": "servicio",
+                "id": "ESC",
+                "nombre": "ESCURRIR"
+            }
+        ]
+    },
+    {
+        "id": "FORM-309",
+        "nombre": "PROBANDO",
+        "secuencia_servicios": []
+    }
+]
